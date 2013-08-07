@@ -2,7 +2,7 @@
 set hidden
 colorscheme Tomorrow-Night
 
-let g:rspec_command = "Dispatch zeus rspec --tty {spec}"
+let g:rspec_command = "!zeus rspec --tty --no-color {spec}"
 
 so ~/.rails.vim.projections
 set wildignore+=*/tmp/*,*/source_maps/*,*.so,*.swp,*.zip,tags,.git/*,.DS_Store
@@ -14,6 +14,15 @@ else
   let &t_SI = "\<Esc>]50;CursorShape=1\x7"
   let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 endif
+
+function! ChooseTestRunner()
+  let current_file = expand('%:t')
+  if current_file =~ '_test.rb'
+    :!zeus test %
+  else
+    :call RunCurrentSpecFile()
+  endif
+endfu
 
 set t_Co=256
 set laststatus=2
@@ -84,7 +93,7 @@ nmap <Leader>tc :tabnew<cr>
 nmap <Leader>tn :tabnext<cr>
 nmap <Leader>tp :tabprevious<cr>
 " Rspec.vim mappings
-map <Leader>t :call RunCurrentSpecFile()<CR>
+map <Leader>t :call ChooseTestRunner()<CR>
 map <Leader>tt :call RunNearestSpec()<CR>
 map <Leader>tl :call RunLastSpec()<CR>
 map <Leader>ta :Dispatch zeus rspec spec<CR>
