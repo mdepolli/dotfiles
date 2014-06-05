@@ -1,3 +1,6 @@
+export RUBY_GC_MALLOC_LIMIT=90000000
+export RUBY_FREE_MIN=200000
+
 autoload -U colors && colors
 autoload -Uz compinit
 compinit
@@ -9,7 +12,7 @@ export EDITOR="mvim"
 ZSH_THEME="kolo"
 CASE_SENSITIVE="true"
 COMPLETION_WAITING_DOTS="true"
-plugins=(git brew jrowe osx zsh-syntax-highlighting tmux rbenv)
+plugins=(git brew jrowe osx zsh-syntax-highlighting tmux)
 
 alias cle="clear"
 alias clea="clear"
@@ -130,7 +133,6 @@ function bigdump() {
 
  source $ZSH/oh-my-zsh.sh
 
-eval "$(rbenv init -)"
 export PATH=./bin:.:$HOME/.rbenv/bin:$PATH:/usr/local/bin:"$HOME/bin":/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:"$HOME/.vims":$PATH
 
 # Add the following to your ~/.bashrc or ~/.zshrc
@@ -156,3 +158,16 @@ fi
 
 alias vc="vim .vim.custom"
 alias deploy="git push origin master && git push heroku master"
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
+alias chrm="open /Applications/Google\ Chrome.app"
+alias gh="chrm http://github.com/chargify/chargify"
+alias gpr="chrm http://github.com/chargify/chargify/pulls"
+alias lvh="chrm http://lvh.me:3000"
+setopt auto_cd
+cdpath=($HOME/dev)
+alias tc='nocorrect be rspec -c spec/gateways spec/responses spec/validators spec/vaults'

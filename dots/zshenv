@@ -1,2 +1,12 @@
-export PATH=/usr/local/bin:"$HOME/bin":"$HOME/.rbenv/bin":$PATH:/usr/local/share/npm/bin:/usr/local/share/python
-eval "$(rbenv init -)"
+[[ -s "$HOME/.rvm/scripts/rvm" ]]                          && . "$HOME/.rvm/scripts/rvm"
+export PS1="\$(~/.rvm/bin/rvm-prompt) ~ $PS1"
+
+alias    g="git"
+alias    gpp="g pull && git push"
+alias    gshave="g shave"
+alias    gstash="g stash"
+alias    gstatus="g status"
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
+export PATH=/usr/local/bin:"$HOME/bin":$PATH:/usr/local/share/npm/bin:/usr/local/share/python
