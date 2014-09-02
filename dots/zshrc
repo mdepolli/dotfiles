@@ -171,3 +171,8 @@ alias lvh="chrm http://lvh.me:3000"
 setopt auto_cd
 cdpath=($HOME/dev)
 alias tc='nocorrect be rspec -c spec/gateways spec/responses spec/validators spec/vaults'
+alias vim='mvim'
+alias clean-branches="git branch --merged master | grep -v \"\* master\" | xargs -n 1 git branch -d"
+alias notes='be rake release_notes | pbcopy'
+alias update='git co master && git pull && bundle && be rake db:migrate db:test:prepare'
+alias servers='foreman start --procfile=Procfile.local'

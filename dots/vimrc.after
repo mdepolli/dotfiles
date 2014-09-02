@@ -1,6 +1,8 @@
 "set background=dark
 set hidden
-colorscheme Tomorrow-Night
+syntax enable
+set background=light
+colorscheme solarized
 
 let g:rspec_command = "!zeus rspec --tty --no-color {spec}"
 
@@ -154,5 +156,3 @@ endif
 
 call pathogen#infect()
 set listchars=tab:▸\
-
-

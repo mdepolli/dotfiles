@@ -161,6 +161,7 @@
 [core]
 	editor = "vi"
 	excludesfile = /Users/efarkas/.gitignore_global
+	editor = /usr/bin/vi
 [color]
 	ui = true
 [user]
